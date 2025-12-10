@@ -27,4 +27,4 @@ CREATE TABLE IF NOT EXISTS user_data (
 
 # Create the application user
 CREATE USER IF NOT EXISTS 'health_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
-GRANT ALL PRIVILEGES ON healthy_wealthy.* TO 'health_app'@'localhost';
+GRANT ALL PRIVILEGES ON health.* TO 'health_app'@'localhost';

@@ -3,6 +3,7 @@ var express = require ('express');
 var ejs = require('ejs');
 var bodyParser= require ('body-parser');
 var mysql = require('mysql2');
+require('dotenv').config()
 
 // Create the express application object
 const app = express()
@@ -28,10 +29,10 @@ var appData = {appName: "Healthy Wealthy"}
 
 // Define the database connection pool
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'fitness_app',
-    password: 'qwertyuiop',
-    database: 'healthy_wealthy',
+    host: process.env.HEALTH_HOST,
+    user: process.env.HEALTH_USER,
+    password: process.env.HEALTH_PASSWORD,
+    database: process.env.HEALTH_DATABASE,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
