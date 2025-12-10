@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/Hwane14/10_health_33821100#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
+    "express-validator": "^7.3.1",
     "install": "^0.13.0",
     "mysql2": "^3.15.3",
     "npm": "^11.7.0"

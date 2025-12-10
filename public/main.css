@@ -25,3 +25,18 @@ p {
 .nav-btn:hover {
   background-color: seagreen;
 }
+
+/* Error message styling */
+.error-list {
+  color: #b30000;          /* dark red for visibility */
+  background-color: #ffe6e6; /* light red background */
+  border: 1px solid #b30000;
+  padding: 10px 15px;
+  border-radius: 4px;
+  list-style-type: none;   /* remove default bullets */
+  margin-bottom: 20px;
+}
+
+.error-list li {
+  margin: 5px 0;
+}

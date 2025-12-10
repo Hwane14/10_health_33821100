@@ -2,6 +2,7 @@
 var express = require ('express');
 var ejs = require('ejs');
 var bodyParser= require ('body-parser');
+var mysql = require('mysql2');
 
 // Create the express application object
 const app = express()
@@ -25,8 +26,21 @@ app.engine('html', ejs.renderFile);
 // Define our data
 var appData = {appName: "Healthy Wealthy"}
 
+// Define the database connection pool
+const db = mysql.createPool({
+    host: 'localhost',
+    user: 'fitness_app',
+    password: 'qwertyuiop',
+    database: 'healthy_wealthy',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+});
+global.db = db;
+
 // Requires the main.js file inside the routes folder passing in the Express app and data as arguments.  All the routes will go in this file
 require("./routes/main")(app, appData);
+require("./routes/users")(app, appData);
 
 // Start the web app listening
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
