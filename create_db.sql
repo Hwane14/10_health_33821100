@@ -1,6 +1,6 @@
 # Create the database
-CREATE DATABASE IF NOT EXISTS healthy_wealthy;
-USE healthy_wealthy;
+CREATE DATABASE IF NOT EXISTS health;
+USE health;
 
 # Create the tables
 # Table to store achievements
@@ -26,5 +26,5 @@ CREATE TABLE IF NOT EXISTS user_data (
 );
 
 # Create the application user
-CREATE USER IF NOT EXISTS 'fitness_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
-GRANT ALL PRIVILEGES ON healthy_wealthy.* TO 'fitness_app'@'localhost';
+CREATE USER IF NOT EXISTS 'health_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
+GRANT ALL PRIVILEGES ON healthy_wealthy.* TO 'health_app'@'localhost';
