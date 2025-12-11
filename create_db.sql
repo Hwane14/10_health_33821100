@@ -3,17 +3,6 @@ CREATE DATABASE IF NOT EXISTS health;
 USE health;
 
 # Create the tables
-# Table to store achievements
-CREATE TABLE IF NOT EXISTS achievements (
-    id INT AUTO_INCREMENT,
-    activity VARCHAR(100),
-    description VARCHAR(255),
-    date DATE,
-    duration_minutes INT,
-    calories_burned INT,
-    PRIMARY KEY(id)
-);
-
 # Table to store user data
 CREATE TABLE IF NOT EXISTS user_data (
     id INT AUTO_INCREMENT,
@@ -22,7 +11,22 @@ CREATE TABLE IF NOT EXISTS user_data (
     last_name VARCHAR(50),
     email VARCHAR(255),
     hashedPassword VARCHAR(255),
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    CONSTRAINT unique_username UNIQUE (username),
+    CONSTRAINT unique_email UNIQUE (email)
+);
+
+# Table to store achievements
+CREATE TABLE IF NOT EXISTS achievements (
+    id INT AUTO_INCREMENT,
+    user_id INT, -- Foreign key reference to user_data.id
+    activity VARCHAR(100),
+    description VARCHAR(255),
+    date DATE,
+    duration_minutes INT,
+    calories_burned INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY (user_id) REFERENCES user_data(id)
 );
 
 # Create the application user
