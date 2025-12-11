@@ -1,14 +1,15 @@
 const bcrypt = require('bcrypt');
 const { check, validationResult } = require('express-validator');
-const redirect_login = (req, res, next) => {
-    if (!req.session.userId) {
-        res.redirect('/users/login'); // redirect to the login page
-    } else {
-        next();
-    }
-}
 
 module.exports = function(app, appData) {
+    const redirect_login = (req, res, next) => {
+        if (!req.session.userId) {
+            res.redirect(appData.basePath + '/users/login'); // redirect to the login page
+        } else {
+            next();
+        }
+    }
+
     // GET register form
     app.get('/register', function(req, res) {
         res.render('register.ejs', {
@@ -214,9 +215,9 @@ module.exports = function(app, appData) {
     app.get('/users/logout', redirect_login, (req, res) => {
         req.session.destroy(err => {
             if (err) {
-                return res.redirect('/');
+                return res.redirect(appData.basePath + '/');
             }
-            res.send('You are now logged out. <a href=' + '../' + '>Back to Home</a>');
+            res.send('You are now logged out. <a href=' + appData.basePath + '>Back to Home</a>');
         });
     });
 };

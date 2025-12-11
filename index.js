@@ -40,7 +40,10 @@ app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
 
 // Define our data
-var appData = {appName: "Healthy Wealthy"}
+var appData = {
+    appName: "Healthy Wealthy",
+    basePath: process.env.HEALTH_BASE_PATH
+}
 
 // Define the database connection pool
 const db = mysql.createPool({
