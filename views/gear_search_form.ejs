@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= appData.appName %> - Search Gear</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <h1><%= appData.appName %> - Search Gym Gear</h1>
+
+    <% if (errors && errors.length > 0) { %>
+        <ul class="error-list">
+            <% errors.forEach(function(error) { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <form action="/gear/search-results" method="GET">
+        <input type="text" name="keyword" placeholder="Enter gear name">
+        <button type="submit" class="nav-btn">Search</button>
+    </form>
+
+    <p><a href="/" class="nav-btn">🏠 Back to Home</a></p>
+</body>
+</html>

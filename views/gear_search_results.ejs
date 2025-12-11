@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= appData.appName %> - Gear Search Results</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <h1><%= appData.appName %> - Search Results for "<%= keyword %>"</h1>
+
+    <% if (gear && gear.length > 0) { %>
+        <ul>
+            <% gear.forEach(function(item) { %>
+                <li><strong><%= item.name %></strong> — £<%= item.price %></li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No gear found matching "<%= keyword %>".</p>
+    <% } %>
+
+    <p><a href="/gear/search" class="nav-btn">New Search</a></p>
+    <p><a href="/" class="nav-btn">Back to Home</a></p>
+</body>
+</html>
