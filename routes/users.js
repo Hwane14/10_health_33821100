@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const { check, validationResult } = require('express-validator');
 const redirect_login = (req, res, next) => {
     if (!req.session.userId) {
-        res.redirect('./login'); // redirect to the login page
+        res.redirect('/users/login'); // redirect to the login page
     } else {
         next();
     }
@@ -214,7 +214,7 @@ module.exports = function(app, appData) {
     app.get('/users/logout', redirect_login, (req, res) => {
         req.session.destroy(err => {
             if (err) {
-                return res.redirect('../');
+                return res.redirect('/');
             }
             res.send('You are now logged out. <a href=' + '../' + '>Back to Home</a>');
         });
