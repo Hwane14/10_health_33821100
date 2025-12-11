@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+<body>
+    <header>
+        <h1><%= appData.appName %> User List</h1>
+    </header>
+
+    <main>
+        <h2>Here are our current users:</h2>
+        <% if(users.length > 0) { %>
+        <ul>
+            <% users.forEach(function(user) { %>
+                <li class="user">
+                    <strong>Name:</strong> <%= user.first_name %> <%= user.last_name %>
+                </li>
+            <% }); %>
+        </ul>
+        <% } else { %>
+        <p>We currently have no users.</p>
+    <% } %>
+    </main>
+    <p><a href="/" class="nav-btn">Return to Home</a></p>
+</body>
+</html>

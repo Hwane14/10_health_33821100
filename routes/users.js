@@ -172,4 +172,21 @@ module.exports = function(app, appData) {
             });
         }
     );
+
+    // GET user list
+    app.get('/users/list', function(req, res, next) {
+        let sqlquery = "SELECT * FROM user_data";
+
+        // Execute SQL query
+        db.query(sqlquery, (err, result) => {
+            if (err) {
+                return next(err);
+            } else {
+                res.render('user_list.ejs', {
+                    users: result,
+                    appData: appData
+                });
+            }
+        });
+    });
 };
