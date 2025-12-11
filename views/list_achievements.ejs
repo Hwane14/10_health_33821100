@@ -12,8 +12,8 @@
         <div class="achievements-list">
             <% achievements.forEach(function(ach) { %>
                 <div class="achievement-card">
-                    <h2 class="achievement-activity"><%= ach.activity %></h2>
-                    <p class="achievement-details">
+                    <h2><%= ach.activity %></h2>
+                    <p>
                         <% if (ach.date) { %>📅 <%= ach.date.toISOString().split('T')[0] %><br><% } %>
                         <% if (ach.duration_minutes) { %>⏱ <%= ach.duration_minutes %> minutes<br><% } %>
                         <% if (ach.calories_burned) { %>🔥 <%= ach.calories_burned %> calories<% } %>
