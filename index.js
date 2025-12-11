@@ -62,6 +62,7 @@ require("./routes/main")(app, appData);
 require("./routes/users")(app, appData);
 require("./routes/achievements")(app, appData);
 require("./routes/gear")(app, appData);
+require("./routes/api")(app, appData);
 
 // Start the web app listening
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
