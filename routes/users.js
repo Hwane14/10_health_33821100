@@ -217,7 +217,7 @@ module.exports = function(app, appData) {
             if (err) {
                 return res.redirect(appData.basePath + '/');
             }
-            res.send('You are now logged out. <a href="' + appData.basePath + '/">Back to Home</a>');
+            res.send('You are now logged out. <a href="' + appData.basePath + '">Back to Home</a>');
         });
     });
 };
