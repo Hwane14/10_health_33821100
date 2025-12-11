@@ -142,7 +142,7 @@ module.exports = function(app, appData) {
                     return res.send(`
                         <h1>Login Failed</h1>
                         <p>Invalid username</p>
-                        <p><a href="/">Return to Home</a></p>
+                        <p><a href="/users/login">Return to Login</a></p>
                         `);
                 }
 
@@ -171,7 +171,7 @@ module.exports = function(app, appData) {
                         res.send(`
                             <h1>Login Failed</h1>
                             <p>Invalid Password.</p>
-                            <p><a href="/">Return to Home</a></p>
+                            <p><a href="/users/login">Return to Login</a></p>
                             `);
                     }
                 } catch (compareErr) {

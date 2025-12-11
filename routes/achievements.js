@@ -13,6 +13,7 @@ module.exports = function(app, appData) {
     app.get('/achievements/add', redirect_login, function(req, res) {
         res.render('add_achievement.ejs', {
             appName: appData.appName,
+            username: req.session.username,
             errors: []
         });
     });
@@ -65,6 +66,23 @@ module.exports = function(app, appData) {
                 <p>Good Stuff!</p>
                 <p><a href="/">Return to Home</a></p>
                 `);
+        });
+    });
+
+    // GET achievements list (for logged-in user)
+    app.get('/achievements/show', redirect_login, function(req, res, next) {
+        const user_id = req.session.userId;
+        const sqlquery = "SELECT * FROM achievements WHERE user_id = ? ORDER BY date DESC";
+
+        // Execute SQL query
+        db.query(sqlquery, [user_id], (err, results) => {
+            if (err) return next(err);
+
+            res.render('list_achievements.ejs', {
+                appName: appData.appName,
+                username: req.session.username,
+                achievements: results
+            });
         });
     });
 }

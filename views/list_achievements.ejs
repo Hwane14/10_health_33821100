@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= appName %> - Achievements</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <h1><%= appName %> - Achievements for <%= username %></h1>
+
+    <% if (achievements && achievements.length > 0) { %>
+        <div class="achievements-list">
+            <% achievements.forEach(function(ach) { %>
+                <div class="achievement-card">
+                    <h2 class="achievement-activity"><%= ach.activity %></h2>
+                    <p class="achievement-details">
+                        <% if (ach.date) { %>📅 <%= ach.date.toISOString().split('T')[0] %><br><% } %>
+                        <% if (ach.duration_minutes) { %>⏱ <%= ach.duration_minutes %> minutes<br><% } %>
+                        <% if (ach.calories_burned) { %>🔥 <%= ach.calories_burned %> calories<% } %>
+                    </p>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p>No achievements yet. Start by adding one!</p>
+    <% } %>
+
+    <p><a href="/achievements/add" class="nav-btn">➕ Add Achievement</a></p>
+    <p><a href="/" class="nav-btn">🏠 Back to Home</a></p>
+</body>
+</html>
