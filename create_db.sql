@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS achievements (
     id INT AUTO_INCREMENT,
     user_id INT, -- Foreign key reference to user_data.id
     activity VARCHAR(100),
-    description VARCHAR(255),
     date DATE,
     duration_minutes INT,
     calories_burned INT,
