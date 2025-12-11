@@ -1,9 +1,10 @@
 // Import the modules we need
-var express = require ('express');
-var ejs = require('ejs');
-var bodyParser= require ('body-parser');
-var mysql = require('mysql2');
+const express = require ('express');
+const ejs = require('ejs');
+const bodyParser= require ('body-parser');
+const mysql = require('mysql2');
 require('dotenv').config();
+const session = require('express-session');
 const expressSanitizer = require('express-sanitizer');
 
 // Create the express application object
@@ -16,6 +17,16 @@ app.use(expressSanitizer());
 
 // Set up css
 app.use(express.static(__dirname + '/public'));
+
+// Create a session
+app.use(session({
+    secret: 'somerandomstuff',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 600000
+    }
+}));
 
 // Set the directory where Express will pick up HTML files
 // __dirname will get the current directory

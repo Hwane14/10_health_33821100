@@ -1,5 +1,12 @@
-const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
+const { check, validationResult } = require('express-validator');
+const redirect_login = (req, res, next) => {
+    if (!req.session.userId) {
+        res.redirect('./login'); // redirect to the login page
+    } else {
+        next();
+    }
+}
 
 module.exports = function(app, appData) {
     // GET register form
@@ -145,8 +152,8 @@ module.exports = function(app, appData) {
 
                     if (match) {
                         // Store numeric id in session
-                        // req.session.userId = user.id;
-                        // req.session.username = user.username;
+                        req.session.userId = user.id;
+                        req.session.username = user.username;
 
                         db.query("INSERT INTO login_attempts (username, success, reason) VALUES (?, ?, ?)",
                             [clean_username, true, "Login successful"]);
@@ -173,8 +180,8 @@ module.exports = function(app, appData) {
         }
     );
 
-    // GET user list
-    app.get('/users/list', function(req, res, next) {
+    // GET user list (protected)
+    app.get('/users/list', redirect_login, function(req, res, next) {
         let sqlquery = "SELECT * FROM user_data";
 
         // Execute SQL query
@@ -188,8 +195,8 @@ module.exports = function(app, appData) {
         });
     });
 
-    // GET login attempts
-    app.get('/users/audit', function(req, res, next) {
+    // GET login attempts (protected)
+    app.get('/users/audit', redirect_login, function(req, res, next) {
         let sqlquery = "SELECT * FROM login_attempts ORDER BY attemptTime DESC";
 
         // Execute SQL query
@@ -200,6 +207,16 @@ module.exports = function(app, appData) {
                 attempts: result,
                 appData: appData
             });
+        });
+    });
+
+    // GET logout
+    app.get('/users/logout', redirect_login, (req, res) => {
+        req.session.destroy(err => {
+            if (err) {
+                return res.redirect('../');
+            }
+            res.send('You are now logged out. <a href=' + '../' + '>Back to Home</a>');
         });
     });
 };
