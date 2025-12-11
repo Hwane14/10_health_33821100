@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= appData.appName %> - Bargain Gear</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <h1><%= appData.appName %> - Bargain Gym Gear</h1>
+    <p>Here's all our gym gear priced below £40</p>
+
+    <% if (bargain_gear && bargain_gear.length > 0) { %>
+        <ul>
+            <% bargain_gear.forEach(function(item) { %>
+                <li>
+                    <strong><%= item.name %></strong> — £<%= item.price %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No bargain gear available at the moment.</p>
+    <% } %>
+
+    <p><a href="/" class="nav-btn">🏠 Back to Home</a></p>
+</body>
+</html>
