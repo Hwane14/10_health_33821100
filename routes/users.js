@@ -179,14 +179,27 @@ module.exports = function(app, appData) {
 
         // Execute SQL query
         db.query(sqlquery, (err, result) => {
-            if (err) {
-                return next(err);
-            } else {
-                res.render('user_list.ejs', {
-                    users: result,
-                    appData: appData
-                });
-            }
+            if (err) return next(err);
+
+            res.render('user_list.ejs', {
+                users: result,
+                appData: appData
+            });
+        });
+    });
+
+    // GET login attempts
+    app.get('/users/audit', function(req, res, next) {
+        let sqlquery = "SELECT * FROM login_attempts ORDER BY attemptTime DESC";
+
+        // Execute SQL query
+        db.query(sqlquery, (err, result) => {
+            if (err) return next(err);
+
+            res.render('audit_history.ejs', {
+                attempts: result,
+                appData: appData
+            });
         });
     });
 };

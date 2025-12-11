@@ -1,42 +1,82 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+    background-color: #d8e8d8;
+    font-family: Arial, sans-serif;
+    margin: 20px;
 }
 
 h1 {
-  color: darkgreen;
+    color: darkgreen;
 }
 
 p {
-  color: #555;
+    color: #555;
 }
 
 /* Navigation button style */
 .nav-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: darkgreen;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: darkgreen;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 .nav-btn:hover {
-  background-color: seagreen;
+    background-color: seagreen;
 }
 
 /* Error message styling */
 .error-list {
-  color: #b30000;          /* dark red for visibility */
-  background-color: #ffe6e6; /* light red background */
-  border: 1px solid #b30000;
-  padding: 10px 15px;
-  border-radius: 4px;
-  list-style-type: none;   /* remove default bullets */
-  margin-bottom: 20px;
+    color: #b30000;          /* dark red for visibility */
+    background-color: #ffe6e6; /* light red background */
+    border: 1px solid #b30000;
+    padding: 10px 15px;
+    border-radius: 4px;
+    list-style-type: none;   /* remove default bullets */
+    margin-bottom: 20px;
 }
 
 .error-list li {
-  margin: 5px 0;
+    margin: 5px 0;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fdfdfd; /* subtle off-white to contrast sage */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* soft shadow for separation */
+}
+
+table th, table td {
+    border: 1px solid #999;   /* darker grey for visibility */
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #c0d6c0; /* muted green-grey header to harmonize with sage */
+    font-weight: bold;
+    color: #1b3d1b;            /* deep green text for clarity */
+}
+
+/* Success and failure classes */
+.success {
+    color: #1b5e20;            /* stronger dark green text */
+    font-weight: bold;
+    background-color: #c8e6c9; /* medium green background for contrast */
+}
+
+.failure {
+    color: #b71c1c;            /* stronger dark red text */
+    font-weight: bold;
+    background-color: #ffcdd2; /* medium red background for contrast */
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+    background-color: #e0e8e0; /* slightly darker sage tint */
 }
