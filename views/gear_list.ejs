@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= appData.appName %> - Gym Gear</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <h1><%= appData.appName %> - Available Gym Gear</h1>
+
+    <% if (available_gear && available_gear.length > 0) { %>
+        <ul>
+            <% available_gear.forEach(function(item) { %>
+                <li><strong><%= item.name %></strong> — £<%= item.price %></li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No gym gear available at the moment.</p>
+    <% } %>
+
+    <p><a href="/" class="nav-btn">🏠 Back to Home</a></p>
+</body>
+</html>

@@ -38,6 +38,14 @@ CREATE TABLE IF NOT EXISTS login_attempts (
     PRIMARY KEY(id)
 );
 
+# Table to store gym gear
+CREATE TABLE IF NOT EXISTS gym_gear (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    PRIMARY KEY(id)
+);
+
 # Create the application user
 CREATE USER IF NOT EXISTS 'health_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
 GRANT ALL PRIVILEGES ON health.* TO 'health_app'@'localhost';
