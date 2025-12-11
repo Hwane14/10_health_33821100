@@ -29,6 +29,16 @@ CREATE TABLE IF NOT EXISTS achievements (
     FOREIGN KEY (user_id) REFERENCES user_data(id)
 );
 
+# Table to track login attempts
+CREATE TABLE IF NOT EXISTS login_attempts (
+    id INT AUTO_INCREMENT,
+    username VARCHAR(255),
+    attemptTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    success BOOLEAN,
+    reason VARCHAR(255),
+    PRIMARY KEY(id)
+);
+
 # Create the application user
 CREATE USER IF NOT EXISTS 'health_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
 GRANT ALL PRIVILEGES ON health.* TO 'health_app'@'localhost';
